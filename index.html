@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Ayam Geprek Cafena Fried Chicken - Responsive Landing Page</title>
   <style>
     /* Import font dari Google */
@@ -13,6 +13,11 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+    html, body {
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      width: 100%;
+      position: relative;
     }
     html {
       scroll-behavior: smooth; /* Scroll halus */
@@ -30,6 +35,8 @@
     .navbar {
       position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       width: 100%;
       background: rgba(231, 76, 60, 0.9);
       padding: 20px 50px;
@@ -67,11 +74,14 @@
       background: none;
       border: none;
       cursor: pointer;
+      padding: 0;
+      margin: 0;
     }
 
     /* Hero Section */
     .hero {
       height: 100vh;
+      width: 100%;
       background: url('images/1.jpg') no-repeat center center/cover;
       display: flex;
       align-items: center;
@@ -123,6 +133,7 @@
     section {
       padding: 80px 20px;
       text-align: center;
+      width: 100%;
     }
     section h2 {
       font-size: 36px;
@@ -140,6 +151,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
     }
     .menu-item {
       width: 300px;
@@ -150,6 +162,8 @@
     }
     .menu-item img {
       width: 100%;
+      height: 200px; /* Fixed height for consistency */
+      object-fit: cover; /* Maintain aspect ratio */
       display: block;
       border-radius: 10px 10px 0 0;
     }
@@ -206,6 +220,8 @@
     .full-width {
       width: 100%;
       height: auto;
+      max-height: 400px;
+      object-fit: contain;
       display: block;
     }
     
@@ -215,6 +231,7 @@
       color: #f1c40f;
       padding: 20px;
       text-align: center;
+      width: 100%;
     }
     
     /* Animasi */
@@ -242,6 +259,10 @@
     @media (max-width: 768px) {
       .navbar {
         padding: 15px 20px;
+        width: 100vw; /* Use viewport width to ensure full width */
+      }
+      .navbar .logo {
+        max-width: 80%; /* Prevent logo from getting too close to toggle */
       }
       .navbar ul {
         flex-direction: column;
@@ -249,8 +270,11 @@
         top: 60px;
         left: 0;
         width: 100%;
-        background: rgba(231, 76, 60, 0.9);
+        background: rgba(231, 76, 60, 0.95);
         display: none;
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        margin: 0;
       }
       .navbar ul.show {
         display: block;
@@ -260,7 +284,7 @@
         text-align: center;
       }
       .menu-toggle {
-        display: fixed;
+        display: block;
       }
       .menu-item {
         width: 90%;
@@ -272,6 +296,40 @@
       .hero p {
         font-size: 16px;
       }
+      /* Fix for the right gap */
+      .hero, section, .footer {
+        width: 100vw;
+        max-width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      section {
+        padding: 60px 10px;
+      }
+      .hero-content, .menu-container {
+        padding: 0 10px;
+      }
+    }
+
+    /* Add styles for extremely small screens */
+    @media (max-width: 480px) {
+      .navbar .logo {
+        font-size: 18px;
+      }
+      .hero h1 {
+        font-size: 24px;
+      }
+      section h2 {
+        font-size: 28px;
+      }
+      .menu-info h3 {
+        font-size: 20px;
+      }
+      .menu-item {
+        width: 95%;
+      }
     }
   </style>
 </head>
@@ -279,12 +337,12 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">Cafena Fried Chicken</div>
-    <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMenu()">&#9776;</button>
     <ul id="nav-menu">
-      <li><a href="#hero">Beranda</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#lokasi">Lokasi</a></li>
-      <li><a href="#kontak">Kontak</a></li>
+      <li><a href="#hero" class="nav-link">Beranda</a></li>
+      <li><a href="#menu" class="nav-link">Menu</a></li>
+      <li><a href="#lokasi" class="nav-link">Lokasi</a></li>
+      <li><a href="#kontak" class="nav-link">Kontak</a></li>
     </ul>
   </header>
   
@@ -296,7 +354,6 @@
       <button onclick="window.location.href='#menu'">Lihat Menu</button>
     </div>
   </section>
-  
   
   <section id="menu">
     <h2 class="fade-in-from-right">Daftar Menu</h2>
@@ -332,30 +389,30 @@
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
-        <img src="images/nasgor.jpg" alt="Geprek Ayam Original">
+        <img src="images/nasgor.jpg" alt="Nasi Goreng">
         <div class="menu-info">
           <h3>Nasi Goreng</h3>
           <div class="price-box">Rp20.000</div>
           <p>Nasi Goreng Dengan Daging Ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Nasi%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
-        <img src="images/mie.jpg" alt="Geprek Ayam Original">
+        <img src="images/mie.jpg" alt="Mie Goreng">
         <div class="menu-info">
           <h3>Mie Goreng</h3>
           <div class="price-box">Rp20.000</div>
           <p>Mie goreng dengan bumbu khas</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Mie%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
-        <img src="images/soto.jpg" alt="Geprek Ayam Original">
+        <img src="images/soto.jpg" alt="Soto">
         <div class="menu-info">
           <h3>Soto</h3>
           <div class="price-box">Rp20.000</div>
           <p>Soto Dengan Kuah Kaldu Ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Soto" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       
@@ -363,53 +420,48 @@
     <h2 class="fade-in-from-right">Daftar Minuman</h2>
     <div class="menu-container">
       <div class="menu-item fade-in-from-right">
-        <img src="images/teh.jpg" alt="Geprek Ayam Original">
+        <img src="images/teh.jpg" alt="Es Teh">
         <div class="menu-info">
           <h3>Es Teh</h3>
           <div class="price-box">Rp5.000</div>
-          <p>Es teh dengan teh alami
-            
-          </p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <p>Es teh dengan teh alami</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Es%20Teh" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
-        <img src="images/jerus.jpg" alt="Geprek Ayam Original">
+        <img src="images/jerus.jpg" alt="Es Jeruk">
         <div class="menu-info">
           <h3>Es Jeruk</h3>
           <div class="price-box">Rp5.000</div>
-          <p>Es jeruk dengan jeruk alami
-
-          </p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <p>Es jeruk dengan jeruk alami</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Es%20Jeruk" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
-        <img src="images/soda.jpg" alt="Geprek Ayam Original">
+        <img src="images/soda.jpg" alt="Soda Gembira">
         <div class="menu-info">
           <h3>Soda Gembira</h3>
           <div class="price-box">Rp5.000</div>
           <p>Es soda gembira dengan campuran yang pas</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Soda%20Gembira" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
-
-      </div>
+    </div>
   </section>
   
   <!-- Lokasi Section -->
   <section id="lokasi">
     <h2 class="fade-in-side">Lokasi Kami</h2>
     <p class="fade-up">Temukan kami di pusat kota, mudah dijangkau dan nyaman untuk bersantap!</p>
-    <img src="images/lok.png" alt="Lokasi" class="full-width fade-in-side" style="max-height:400px;">
+    <img src="images/lok.png" alt="Lokasi" class="full-width fade-in-side">
   </section>
   
   <!-- Kontak Section -->
   <section id="kontak">
     <h2 class="fade-in-side">Kontak</h2>
     <p class="fade-up">Hubungi kami melalui telepon atau media sosial untuk pemesanan dan informasi lebih lanjut.</p>
-    <p class="fade-up">Telepon: 0812-3456-7890</p>
-    <p class="fade-up">Email: info@geprekCafena Fried Chicken.com</p>
+    <p class="fade-up">Telepon: <a href="tel:081234567890">0812-3456-7890</a></p>
+    <p class="fade-up">Email: <a href="mailto:info@geprekCafenaFriedChicken.com">info@geprekCafenaFriedChicken.com</a></p>
   </section>
   
   <!-- Footer -->
@@ -419,6 +471,13 @@
   
   <!-- JavaScript untuk animasi dan toggle menu -->
   <script>
+    // Fungsi untuk menampilkan/menyembunyikan menu mobile
+    function toggleMenu() {
+      const navMenu = document.getElementById('nav-menu');
+      navMenu.classList.toggle('show');
+    }
+    
+    // Fungsi untuk animasi elemen saat scroll
     function animateOnScroll() {
       const elements = document.querySelectorAll('.fade-in-side, .fade-up, .fade-in-from-right, .menu-item');
       const observer = new IntersectionObserver((entries) => {
@@ -432,28 +491,52 @@
       elements.forEach(element => observer.observe(element));
     }
     
-    function toggleMenu() {
-      const navMenu = document.getElementById('nav-menu');
-      navMenu.classList.toggle('show');
-    }
-    
-    // Tambahkan smooth scroll untuk setiap link anchor
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    // Tambahkan event listener untuk setiap link navigasi
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+        
+        // Tutup menu mobile jika terbuka
+        const navMenu = document.getElementById('nav-menu');
+        if (navMenu.classList.contains('show')) {
+          navMenu.classList.remove('show');
         }
-        if(window.innerWidth <= 768) {
-          toggleMenu();
+        
+        // Scroll ke section yang dituju
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
     
-    window.onload = () => {
+    // Prevent horizontal scrolling
+    document.body.addEventListener('touchmove', function(e) {
+      if (Math.abs(e.touches[0].clientX) > window.innerWidth) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+    
+    // Smooth scroll untuk tombol Lihat Menu di hero section
+    document.querySelector('.hero button').addEventListener('click', function() {
+      const menuSection = document.querySelector('#menu');
+      if (menuSection) {
+        menuSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    // Inisialisasi animasi saat halaman dimuat
+    window.addEventListener('load', function() {
+      // Fix any potential width issues on load
+      document.body.style.width = '100%';
+      document.documentElement.style.width = '100%';
+      
       animateOnScroll();
-    };
+      
+      // Animate hero content immediately
+      document.querySelector('.hero-content').classList.add('animate');
+    });
   </script>
 </body>
 </html>
