@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ayam Geprek Ripda - Responsive Landing Page</title>
+  <title>Ayam Geprek Cafena Fried Chicken - Responsive Landing Page</title>
   <style>
     /* Import font dari Google */
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -15,11 +15,15 @@
       box-sizing: border-box;
     }
     html {
-      scroll-behavior: smooth; /* Mengatur scroll otomatis agar halus */
+      scroll-behavior: smooth; /* Scroll halus */
     }
     body {
       font-family: 'Roboto', sans-serif;
       line-height: 1.6;
+    }
+    /* Tambahkan scroll-margin-top agar setiap section tampil dengan jarak atas yang sama */
+    section {
+      scroll-margin-top: 80px;
     }
     
     /* Navbar */
@@ -88,6 +92,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
+      width: 100%;
       max-width: 800px;
       padding: 20px;
     }
@@ -255,9 +260,8 @@
         text-align: center;
       }
       .menu-toggle {
-        display: block;
+        display: fixed;
       }
-      /* Perkecil ukuran gambar menu */
       .menu-item {
         width: 90%;
         margin: 10px auto;
@@ -274,7 +278,7 @@
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">Geprek Ripda</div>
+    <div class="logo">Cafena Fried Chicken</div>
     <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
     <ul id="nav-menu">
       <li><a href="#hero">Beranda</a></li>
@@ -287,50 +291,110 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="hero-content fade-up">
-      <h1>Ayam Geprek Ripda</h1>
+      <h1>Ayam Geprek Cafena Fried Chicken</h1>
       <p>Rasakan sensasi pedas dan gurih yang luar biasa!</p>
       <button onclick="window.location.href='#menu'">Lihat Menu</button>
     </div>
   </section>
   
-  <!-- Menu Section -->
+  
   <section id="menu">
-    <h2 class="fade-in-from-right">Menu Unggulan</h2>
+    <h2 class="fade-in-from-right">Daftar Menu</h2>
     <div class="menu-container">
       <!-- Menu Item 1 -->
       <div class="menu-item fade-in-from-right">
-        <img src="images/3.jpg" alt="Geprek Ayam Original">
+        <img src="images/1.jpg" alt="Geprek Ayam Original">
         <div class="menu-info">
-          <h3>Geprek Ayam Original</h3>
+          <h3>Ayam Geprek Dada</h3>
           <div class="price-box">Rp20.000</div>
-          <p>Ayam geprek dengan sambal khas</p>
-          <a href="https://api.whatsapp.com/send?phone=+6289685698696&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" 
-             class="order-btn" target="_blank">Pesan Sekarang</a>
+          <p>Ayam geprek dengan bagian dada ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <!-- Menu Item 2 -->
       <div class="menu-item fade-in-from-right">
-        <img src="images/3.jpg" alt="Geprek Keju">
+        <img src="images/2.jpg" alt="Geprek Keju">
         <div class="menu-info">
-          <h3>Geprek Keju</h3>
+          <h3>Ayam Geprek Paha Atas</h3>
           <div class="price-box">Rp25.000</div>
-          <p>Gurih dengan topping keju leleh</p>
-          <a href="https://api.whatsapp.com/send?phone=+6289685698696&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Keju" 
-             class="order-btn" target="_blank">Pesan Sekarang</a>
+          <p>Ayam geprek dengan bagian paha atas ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Keju" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <!-- Menu Item 3 -->
       <div class="menu-item fade-in-from-right">
         <img src="images/3.jpg" alt="Geprek Pedas Extreme">
         <div class="menu-info">
-          <h3>Geprek Pedas Extreme</h3>
+          <h3>Ayam Geprek Paha Bawah</h3>
           <div class="price-box">Rp30.000</div>
-          <p>Untuk pencinta pedas sejati</p>
-          <a href="https://api.whatsapp.com/send?phone=+6289685698696&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" 
-             class="order-btn" target="_blank">Pesan Sekarang</a>
+          <p>Ayam Geprek dengan bagian paha bawah ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Pedas%20Extreme" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
+      <div class="menu-item fade-in-from-right">
+        <img src="images/nasgor.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Nasi Goreng</h3>
+          <div class="price-box">Rp20.000</div>
+          <p>Nasi Goreng Dengan Daging Ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+      <div class="menu-item fade-in-from-right">
+        <img src="images/mie.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Mie Goreng</h3>
+          <div class="price-box">Rp20.000</div>
+          <p>Mie goreng dengan bumbu khas</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+      <div class="menu-item fade-in-from-right">
+        <img src="images/soto.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Soto</h3>
+          <div class="price-box">Rp20.000</div>
+          <p>Soto Dengan Kuah Kaldu Ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+      
     </div>
+    <h2 class="fade-in-from-right">Daftar Minuman</h2>
+    <div class="menu-container">
+      <div class="menu-item fade-in-from-right">
+        <img src="images/teh.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Es Teh</h3>
+          <div class="price-box">Rp5.000</div>
+          <p>Es teh dengan teh alami
+            
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+      <div class="menu-item fade-in-from-right">
+        <img src="images/jerus.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Es Jeruk</h3>
+          <div class="price-box">Rp5.000</div>
+          <p>Es jeruk dengan jeruk alami
+
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+      <div class="menu-item fade-in-from-right">
+        <img src="images/soda.jpg" alt="Geprek Ayam Original">
+        <div class="menu-info">
+          <h3>Soda Gembira</h3>
+          <div class="price-box">Rp5.000</div>
+          <p>Es soda gembira dengan campuran yang pas</p>
+          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+
+      </div>
   </section>
   
   <!-- Lokasi Section -->
@@ -345,12 +409,12 @@
     <h2 class="fade-in-side">Kontak</h2>
     <p class="fade-up">Hubungi kami melalui telepon atau media sosial untuk pemesanan dan informasi lebih lanjut.</p>
     <p class="fade-up">Telepon: 0812-3456-7890</p>
-    <p class="fade-up">Email: info@geprekRipda.com</p>
+    <p class="fade-up">Email: info@geprekCafena Fried Chicken.com</p>
   </section>
   
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 Ayam Geprek Ripda. All rights reserved.</p>
+    <p>&copy; 2025 Ayam Geprek Cafena Fried Chicken. All rights reserved.</p>
   </footer>
   
   <!-- JavaScript untuk animasi dan toggle menu -->
@@ -373,7 +437,7 @@
       navMenu.classList.toggle('show');
     }
     
-    // Jika ingin menambahkan efek smooth scroll secara manual
+    // Tambahkan smooth scroll untuk setiap link anchor
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -381,7 +445,6 @@
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
         }
-        // Jika di mobile, sembunyikan menu setelah klik
         if(window.innerWidth <= 768) {
           toggleMenu();
         }
