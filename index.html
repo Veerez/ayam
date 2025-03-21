@@ -146,19 +146,22 @@
       color: #333;
     }
     
-    /* Menu Section */
+    /* Menu Section - UPDATED */
     .menu-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
+      gap: 20px; /* Consistent spacing between items */
     }
     .menu-item {
       width: 300px;
-      margin: 20px;
+      margin: 0; /* Remove margin and use gap for spacing */
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column; /* Stack children vertically */
     }
     .menu-item img {
       width: 100%;
@@ -172,16 +175,30 @@
       padding: 15px;
       border-radius: 0 0 10px 10px;
       text-align: left;
+      flex-grow: 1; /* Allow to take remaining space */
+      display: flex;
+      flex-direction: column;
     }
     .menu-info h3 {
       font-size: 24px;
       margin-bottom: 10px;
       color: #e74c3c;
+      min-height: 36px; /* Set minimum height for title */
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .menu-info p {
       font-size: 18px;
       color: #333;
       margin-bottom: 10px;
+      min-height: 58px; /* Set fixed height for description */
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Limit to 2 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis; /* Add ellipsis for overflowing text */
     }
     /* Kotak Harga ditempatkan di atas tombol Pesan Sekarang */
     .price-box {
@@ -203,7 +220,7 @@
     /* Tombol Pesan Sekarang */
     .order-btn {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: auto; /* Push to bottom of container */
       background: #f1c40f;
       color: #e74c3c;
       padding: 10px 20px;
@@ -211,6 +228,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s ease;
+      align-self: flex-start; /* Align to left */
     }
     .order-btn:hover {
       background: #e67e22;
@@ -223,6 +241,24 @@
       max-height: 400px;
       object-fit: contain;
       display: block;
+    }
+
+    /* Make the map responsive */
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
     
     /* Footer */
@@ -286,9 +322,12 @@
       .menu-toggle {
         display: block;
       }
+      .menu-container {
+        gap: 15px; /* Smaller gap on mobile */
+      }
       .menu-item {
-        width: 90%;
-        margin: 10px auto;
+        width: 100%;
+        max-width: 320px; /* Maximum width on mobile */
       }
       .hero h1 {
         font-size: 32px;
@@ -326,6 +365,11 @@
       }
       .menu-info h3 {
         font-size: 20px;
+        min-height: 30px;
+      }
+      .menu-info p {
+        font-size: 16px;
+        min-height: 52px;
       }
       .menu-item {
         width: 95%;
@@ -363,9 +407,9 @@
         <img src="images/1.jpg" alt="Geprek Ayam Original">
         <div class="menu-info">
           <h3>Ayam Geprek Dada</h3>
-          <div class="price-box">Rp20.000</div>
+          <div class="price-box">Rp7.000</div>
           <p>Ayam geprek dengan bagian dada ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Original" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Bagian%20Dada" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <!-- Menu Item 2 -->
@@ -373,9 +417,9 @@
         <img src="images/2.jpg" alt="Geprek Keju">
         <div class="menu-info">
           <h3>Ayam Geprek Paha Atas</h3>
-          <div class="price-box">Rp25.000</div>
+          <div class="price-box">Rp7.000</div>
           <p>Ayam geprek dengan bagian paha atas ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Keju" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Bagian%20Paha%20Atas" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <!-- Menu Item 3 -->
@@ -383,36 +427,47 @@
         <img src="images/3.jpg" alt="Geprek Pedas Extreme">
         <div class="menu-info">
           <h3>Ayam Geprek Paha Bawah</h3>
-          <div class="price-box">Rp30.000</div>
+          <div class="price-box">Rp7.000</div>
           <p>Ayam Geprek dengan bagian paha bawah ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Pedas%20Extreme" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Bagian%20Paha%20Bawah" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
+
+      <div class="menu-item fade-in-from-right">
+        <img src="images/sayap.jpg" alt="Geprek Sayap">
+        <div class="menu-info">
+          <h3>Ayam Geprek Sayap</h3>
+          <div class="price-box">Rp7.000</div>
+          <p>Ayam geprek dengan bagian sayap ayam</p>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Geprek%20Ayam%20Bagian%20Sayap" class="order-btn" target="_blank">Pesan Sekarang</a>
+        </div>
+      </div>
+
       <div class="menu-item fade-in-from-right">
         <img src="images/nasgor.jpg" alt="Nasi Goreng">
         <div class="menu-info">
           <h3>Nasi Goreng</h3>
-          <div class="price-box">Rp20.000</div>
+          <div class="price-box">Rp10.000</div>
           <p>Nasi Goreng Dengan Daging Ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Nasi%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Nasi%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
         <img src="images/mie.jpg" alt="Mie Goreng">
         <div class="menu-info">
           <h3>Mie Goreng</h3>
-          <div class="price-box">Rp20.000</div>
+          <div class="price-box">Rp10.000</div>
           <p>Mie goreng dengan bumbu khas</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Mie%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Mie%20Goreng" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
         <img src="images/soto.jpg" alt="Soto">
         <div class="menu-info">
           <h3>Soto</h3>
-          <div class="price-box">Rp20.000</div>
+          <div class="price-box">Rp10.000</div>
           <p>Soto Dengan Kuah Kaldu Ayam</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Soto" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Soto" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       
@@ -425,7 +480,7 @@
           <h3>Es Teh</h3>
           <div class="price-box">Rp5.000</div>
           <p>Es teh dengan teh alami</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Es%20Teh" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Es%20Teh" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
@@ -434,16 +489,16 @@
           <h3>Es Jeruk</h3>
           <div class="price-box">Rp5.000</div>
           <p>Es jeruk dengan jeruk alami</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Es%20Jeruk" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Es%20Jeruk" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
       <div class="menu-item fade-in-from-right">
         <img src="images/soda.jpg" alt="Soda Gembira">
         <div class="menu-info">
           <h3>Soda Gembira</h3>
-          <div class="price-box">Rp5.000</div>
+          <div class="price-box">Rp8.000</div>
           <p>Es soda gembira dengan campuran yang pas</p>
-          <a href="https://api.whatsapp.com/send?phone=081234567890&text=Halo,%20saya%20ingin%20memesan%20Soda%20Gembira" class="order-btn" target="_blank">Pesan Sekarang</a>
+          <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan%20Soda%20Gembira" class="order-btn" target="_blank">Pesan Sekarang</a>
         </div>
       </div>
     </div>
@@ -452,7 +507,12 @@
   <!-- Lokasi Section -->
   <section id="lokasi">
     <h2 class="fade-in-side">Lokasi Kami</h2>
-    <p class="fade-up">Temukan kami di pusat kota, mudah dijangkau dan nyaman untuk bersantap!</p>
+    <p class="fade-up">Temukan kami di warung giras, mudah dijangkau dan nyaman untuk bersantap!</p>
+    
+    <div class="map-container fade-in-side">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26122.648350259456!2d111.81673736457515!3d-6.80282726590117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7709ce91c511fd%3A0x31a95c2f657f8bc7!2sWarkop%20Giras%20SPK%20Sedulur%20Podo%20Kopi!5e1!3m2!1sen!2sid!4v1742541217220!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
     <img src="images/lok.png" alt="Lokasi" class="full-width fade-in-side">
   </section>
   
@@ -460,8 +520,9 @@
   <section id="kontak">
     <h2 class="fade-in-side">Kontak</h2>
     <p class="fade-up">Hubungi kami melalui telepon atau media sosial untuk pemesanan dan informasi lebih lanjut.</p>
-    <p class="fade-up">Telepon: <a href="tel:081234567890">0812-3456-7890</a></p>
-    <p class="fade-up">Email: <a href="mailto:info@geprekCafenaFriedChicken.com">info@geprekCafenaFriedChicken.com</a></p>
+    <p class="fade-up">Telepon: <a href="tel:+6289606862249">089606862249</a></p>
+    <p class="fade-up">WhatsApp: <a href="https://api.whatsapp.com/send?phone=+6289606862249&text=Halo,%20saya%20ingin%20memesan">089606862249</a></p>
+    <p class="fade-up">Email: <!--<a href="mailto:info@geprekCafenaFriedChicken.com">-->-</a></p>
   </section>
   
   <!-- Footer -->
@@ -539,4 +600,4 @@
     });
   </script>
 </body>
-</html>
+</html> 
